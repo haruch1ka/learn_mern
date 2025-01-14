@@ -1,7 +1,6 @@
 const router = require("express").Router();
+const User = require("../models/User");
 
-router.get("/", (req, res) => {
-	res.send("users express");
-});
+//ユーザ登録
 
 module.exports = router;
