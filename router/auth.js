@@ -1,7 +1,23 @@
 const router = require("express").Router();
+const user = require("../models/User");
 
-router.get("/", (req, res) => {
-	res.send("auth router");
+//ユーザー登録
+
+router.post("/register", async (req, res) => {
+	try {
+		const newUser = await new User({
+			username: req.body.username,
+			email: req.body.email,
+			password: req.body.password,
+		});
+		const user = await newUser.save();
+		return res.status(200).json(user);
+	} catch (error) {
+		return res.status(500).json(error);
+	}
 });
+// router.get("/", (req, res) => {
+// 	res.send("auth router");
+// });
 
 module.exports = router;

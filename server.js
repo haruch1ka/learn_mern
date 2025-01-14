@@ -15,6 +15,7 @@ const authsRoute = require("./router/auth");
 const postsRoute = require("./router/posts");
 
 //middleware
+app.use(express.json());
 app.use("/api/users", userRoute);
 app.use("/api/auth", authsRoute);
 app.use("/api/posts", postsRoute);
