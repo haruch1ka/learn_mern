@@ -1,6 +1,7 @@
 import "./TimeLine.css";
 import Share from "./../share/Share";
 import Post from "./../post/Post";
+import { Posts } from "./../../../dummyData";
 
 const Timeline = () => {
 	return (
@@ -8,9 +9,9 @@ const Timeline = () => {
 			<div className="timeline">
 				<div className="timelineWrapper">
 					<Share />
-					<Post />
-					<Post />
-					<Post />
+					{Posts.map((p) => (
+						<Post key={p.id} post={p} />
+					))}
 				</div>
 			</div>
 		</>

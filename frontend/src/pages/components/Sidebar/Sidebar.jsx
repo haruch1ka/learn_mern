@@ -7,6 +7,8 @@ import ProfileIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import "./Sidebar.css";
 
+import { Users } from "./../../../dummyData";
+
 const Sidebar = () => {
 	return (
 		<>
@@ -45,26 +47,12 @@ const Sidebar = () => {
 					</ul>
 					<hr className="sidebarHr" />
 					<ul className="sidebarFriendList">
-						<li className="sidebarFriend">
-							<img src="./assets/person/1.jpeg" alt="" className="sidebarFriendImg" />
-							sincode
-						</li>
-						<li className="sidebarFriend">
-							<img src="./assets/person/2.jpeg" alt="" className="sidebarFriendImg" />
-							tanaka
-						</li>
-						<li className="sidebarFriend">
-							<img src="./assets/person/3.jpeg" alt="" className="sidebarFriendImg" />
-							satou
-						</li>
-						<li className="sidebarFriend">
-							<img src="./assets/person/4.jpeg" alt="" className="sidebarFriendImg" />
-							hayase
-						</li>
-						<li className="sidebarFriend">
-							<img src="./assets/person/5.jpeg" alt="" className="sidebarFriendImg" />
-							usio
-						</li>
+						{Users.map((u) => (
+							<li className="sidebarFriend" key={u.id}>
+								<img src={u.profilePicture} alt="" className="sidebarFriendImg" />
+								{u.username}
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
