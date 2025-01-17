@@ -14,7 +14,8 @@
     "@mui/styled-engine-sc": "^6.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "styled-components": "^6.1.14"
+    "styled-components": "^6.1.14",
+    "axios": "^1.7.9"
   },
   "devDependencies": {
     "@emotion/react": "^11.14.0",
@@ -24,7 +25,7 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "axios": "^1.7.9",
+    
     "eslint": "^9.17.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -32,5 +33,6 @@
     "globals": "^15.14.0",
     "react-router-dom": "^7.1.2",
     "vite": "^6.0.5"
-  }
+  },
+  "proxy": "http://localhost:5000/api"
 }
