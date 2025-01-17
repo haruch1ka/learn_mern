@@ -82,3 +82,40 @@
 	color: #434343;
 	margin-top: -20px;
 }
+
+.rightbarTitle {
+	font-size: 10px;
+	font-weight: 550;
+	margin-bottom: 10px;
+}
+.rightInfo {
+	margin-bottom: 30px;
+}
+.rightbarInfokey {
+	font-weight: 500;
+	margin-right: 5px;
+	color: #555;
+}
+
+.rightbarFollowings {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.rightbarFollowing {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: auto;
+	cursor: pointer;
+}
+
+.rightbarFollowingImg {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	object-fit: cover;
+}
+.rightbarInfoItem {
+	margin-bottom: 10px;
+}
