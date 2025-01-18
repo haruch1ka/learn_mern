@@ -4,6 +4,7 @@ import { Users } from "./../../../dummyData";
 import { useState } from "react";
 
 const Post = ({ post }) => {
+	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 	//cオブジェクトのなかに desc, photo, date, like, comment, userId を定義する
 	const c = { post: post.desc, photo: post.photo, date: post.date, like: post.like, comment: post.comment, userId: post.userId };
 
@@ -23,7 +24,7 @@ const Post = ({ post }) => {
 				<div className="postWrapper">
 					<div className="postTop">
 						<div className="postTopLeft">
-							<img src={user[0].profilePicture} alt="" className="postProfileImg" />
+							<img src={PUBLIC_FOLDER + user[0].profilePicture} alt="" className="postProfileImg" />
 							<span className="postUsername">{user[0].username}</span>
 							<span className="postDate">{c.date}</span>
 						</div>
@@ -33,7 +34,7 @@ const Post = ({ post }) => {
 					</div>
 					<div className="postCenter">
 						<span className="postText">{c.desc}</span>
-						<img src={c.photo} alt="" className="postImg" />
+						<img src={PUBLIC_FOLDER + c.photo} alt="" className="postImg" />
 					</div>
 					<div className="postBottom">
 						<div className="postBottomLeft">

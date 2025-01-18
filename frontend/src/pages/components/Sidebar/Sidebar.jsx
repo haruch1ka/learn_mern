@@ -7,9 +7,12 @@ import ProfileIcon from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import "./Sidebar.css";
 
+import { Link } from "react-router-dom";
+
 import { Users } from "./../../../dummyData";
 
 const Sidebar = () => {
+	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 	return (
 		<>
 			<div className="sidebar">
@@ -17,7 +20,9 @@ const Sidebar = () => {
 					<ul className="sidebarList">
 						<li className="sidebarListItem">
 							<HomeIcon className="sidebarIcon" />
-							<span className="sidebarListItemText">ホーム</span>
+							<Link to="/" style={{ textDecoration: "none", color: "black" }}>
+								<span className="sidebarListItemText">ホーム</span>
+							</Link>
 						</li>
 						<li className="sidebarListItem">
 							<SearchIcon className="sidebarIcon" />
@@ -38,7 +43,9 @@ const Sidebar = () => {
 						</li>
 						<li className="sidebarListItem">
 							<ProfileIcon className="sidebarIcon" />
-							<span className="sidebarListItemText">プロフィール</span>
+							<Link to="/profile/shincode" style={{ textDecoration: "none", color: "black" }}>
+								<span className="sidebarListItemText">プロフィール</span>
+							</Link>
 						</li>
 						<li className="sidebarListItem">
 							<SettingsIcon className="sidebarIcon" />
@@ -49,7 +56,7 @@ const Sidebar = () => {
 					<ul className="sidebarFriendList">
 						{Users.map((u) => (
 							<li className="sidebarFriend" key={u.id}>
-								<img src={u.profilePicture} alt="" className="sidebarFriendImg" />
+								<img src={PUBLIC_FOLDER + u.profilePicture} alt="" className="sidebarFriendImg" />
 								{u.username}
 							</li>
 						))}
