@@ -12,7 +12,7 @@ const Timeline = () => {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await axios.get("/api/posts/timeline/678b2969c6a01b2f10daad55");
+				const response = await axios.get("/api/posts/timeline/678b3e26f6d14635261e3aaf");
 				console.log(response.data);
 				setPosts(response.data);
 			} catch (error) {
@@ -27,9 +27,9 @@ const Timeline = () => {
 			<div className="timeline">
 				<div className="timelineWrapper">
 					<Share />
-					{/* {Posts.map((p) => (
-						<Post key={p.id} post={p} />
-					))} */}
+					{Posts.map((p) => (
+						<Post key={p._id} post={p} />
+					))}
 				</div>
 			</div>
 		</>
