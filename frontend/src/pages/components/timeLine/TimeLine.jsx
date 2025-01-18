@@ -12,7 +12,7 @@ const Timeline = () => {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await axios.get("http://localhost:5000/api/posts/timeline/6787b90e754cff1397b1707e");
+				const response = await axios.get("/api/posts/timeline/678b2969c6a01b2f10daad55");
 				console.log(response.data);
 				setPosts(response.data);
 			} catch (error) {
