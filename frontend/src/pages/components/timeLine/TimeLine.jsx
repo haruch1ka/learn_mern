@@ -13,7 +13,7 @@ const Timeline = ({ username }) => {
 			try {
 				const response = username
 					? await axios.get(`/api/posts/profile/${username}`)
-					: await axios.get("/api/posts/timeline/678b3e26f6d14635261e3aaf");
+					: await axios.get("/api/posts/timeline/678daa7b178a0daf01723059");
 				console.log(response.data);
 				setPosts(response.data);
 			} catch (error) {

@@ -3,7 +3,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 // import { Users } from "./../../../dummyData";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 
 const Post = ({ post }) => {
@@ -21,7 +21,7 @@ const Post = ({ post }) => {
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const response = await axios.get(`/api/users/${post.userId}`);
+				const response = await axios.get(`/api/users/?userId=${post.userId}`);
 				setUser(response.data);
 				console.log(user);
 			} catch (error) {
@@ -29,7 +29,7 @@ const Post = ({ post }) => {
 			}
 		};
 		fetchUser();
-	}, []);
+	}, [post.userId]);
 
 	return (
 		<>
@@ -37,7 +37,9 @@ const Post = ({ post }) => {
 				<div className="postWrapper">
 					<div className="postTop">
 						<div className="postTopLeft">
-							<img src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"} alt="" className="postProfileImg" />
+							<Link to={`/profile/${user.username}`}>
+								<img src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"} alt="" className="postProfileImg" />
+							</Link>
 							<span className="postUsername">{user.username}</span>
 							<span className="postDate">{format(post.createdAt)}</span>
 						</div>
