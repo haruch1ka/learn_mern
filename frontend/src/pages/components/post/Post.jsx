@@ -4,6 +4,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { format } from "timeago.js";
+
 const Post = ({ post }) => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 	//cオブジェクトのなかに desc, photo, date, like, comment, userId を定義する
@@ -11,7 +13,7 @@ const Post = ({ post }) => {
 	// const user = Users.filter((u) => u.id === post.userId);
 	// console.log(user);
 
-	const [like, setLike] = useState(post.like);
+	const [like, setLike] = useState(post.likes.length);
 	const [isLiked, setIsLiked] = useState(false);
 	const handleLike = (like) => {
 		setLike(isLiked ? like - 1 : like + 1);
@@ -41,7 +43,7 @@ const Post = ({ post }) => {
 						<div className="postTopLeft">
 							<img src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"} alt="" className="postProfileImg" />
 							<span className="postUsername">{user.username}</span>
-							<span className="postDate">{post.updateAt}</span>
+							<span className="postDate">{format(post.createdAt)}</span>
 						</div>
 						<div className="postTopRight">
 							<MoreVertIcon />
