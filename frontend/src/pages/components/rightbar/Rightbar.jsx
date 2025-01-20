@@ -2,7 +2,7 @@ import "./Rightbar.css";
 import Online from "./../online/Online";
 import { Users } from "./../../../dummyData";
 
-const Rightbar = ({ profile }) => {
+const Rightbar = ({ user }) => {
 	const HomeRightbar = () => {
 		const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 		return (
@@ -41,7 +41,7 @@ const Rightbar = ({ profile }) => {
 				<div className="rightbarInfo">
 					<div className="rightbarInfoItem">
 						<span className="rightbarInfokey">出身:</span>
-						<span className="rightbarInfokey">福岡</span>
+						<span className="rightbarInfokey">{user.city}</span>
 					</div>
 				</div>
 				<h4 className="rightbarTitle">あなたの友達</h4>
@@ -77,7 +77,7 @@ const Rightbar = ({ profile }) => {
 	return (
 		<>
 			<div className="rightbar">
-				<div className="rightbarWrapper">{profile ? <ProfileRightbar /> : <HomeRightbar />}</div>
+				<div className="rightbarWrapper">{user ? <ProfileRightbar /> : <HomeRightbar />}</div>
 			</div>
 		</>
 	);

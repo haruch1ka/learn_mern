@@ -5,6 +5,7 @@ import "./Topbar.css";
 import { Link } from "react-router-dom";
 
 const Topbar = () => {
+	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 	return (
 		<>
 			<div className="topbarContainer">
@@ -31,7 +32,7 @@ const Topbar = () => {
 							<NotificationsIcon />
 							<div className="topbarIconBadge">2</div>
 						</div>
-						<img src="./assets/person/1.jpeg" alt="" className="topbarImg" />
+						<img src={PUBLIC_FOLDER + "/person/1.jpeg"} alt="" className="topbarImg" />
 					</div>
 				</div>
 			</div>
