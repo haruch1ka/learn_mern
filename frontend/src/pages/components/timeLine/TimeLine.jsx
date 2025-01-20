@@ -21,7 +21,7 @@ const Timeline = ({ username }) => {
 			}
 		};
 		fetchPosts();
-	}, []);
+	}, [username]);
 
 	return (
 		<>
