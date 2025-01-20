@@ -8,10 +8,6 @@ import { format } from "timeago.js";
 
 const Post = ({ post }) => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
-	//cオブジェクトのなかに desc, photo, date, like, comment, userId を定義する
-
-	// const user = Users.filter((u) => u.id === post.userId);
-	// console.log(user);
 
 	const [like, setLike] = useState(post.likes.length);
 	const [isLiked, setIsLiked] = useState(false);

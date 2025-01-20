@@ -3,9 +3,26 @@ import Sidebar from "./../components/sidebar/Sidebar";
 import Timeline from "./../components/timeline/Timeline";
 import Rightbar from "./../components/rightbar/Rightbar";
 import "./profile.css";
+import axios from "axios";
+
+import { useEffect, useState } from "react";
 
 const Profile = () => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
+
+	const [user, setUser] = useState({});
+	useEffect(() => {
+		const fetchUser = async () => {
+			try {
+				const response = await axios.get(`/api/users?username=anno`);
+				setUser(response.data);
+			} catch (error) {
+				console.error("Error fetching posts:", error);
+			}
+		};
+		fetchUser();
+	}, []);
+
 	return (
 		<>
 			<Topbar />
@@ -18,12 +35,12 @@ const Profile = () => {
 							<img src={PUBLIC_FOLDER + "/person/1.jpeg"} alt="" className="profileUserImg" />
 						</div>
 						<div className="profileInfo">
-							<h4 className="profileInfoName">Shin Code</h4>
-							<span className="profileInfoDesc">Udemy講師をしています</span>
+							<h4 className="profileInfoName">{user.username}</h4>
+							<span className="profileInfoDesc">{user.desc}</span>
 						</div>
 					</div>
 					<div className="profileRightBottom">
-						<Timeline />
+						<Timeline username="anno" />
 						<Rightbar profile />
 					</div>
 				</div>
