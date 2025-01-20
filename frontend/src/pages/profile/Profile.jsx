@@ -4,6 +4,7 @@ import Timeline from "./../components/timeline/Timeline";
 import Rightbar from "./../components/rightbar/Rightbar";
 import "./profile.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
@@ -11,10 +12,12 @@ const Profile = () => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 
 	const [user, setUser] = useState({});
+	const username = useParams().username;
+
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const response = await axios.get(`/api/users?username=anno`);
+				const response = await axios.get(`/api/users?username=${username}`);
 				setUser(response.data);
 			} catch (error) {
 				console.error("Error fetching posts:", error);
@@ -40,8 +43,8 @@ const Profile = () => {
 						</div>
 					</div>
 					<div className="profileRightBottom">
-						<Timeline username="anno" />
-						<Rightbar profile />
+						<Timeline username={username} />
+						<Rightbar user={user} />
 					</div>
 				</div>
 			</div>
