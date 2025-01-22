@@ -9,6 +9,8 @@ import { format } from "timeago.js";
 import { useContext } from "react";
 import { AuthContext } from "./../../../state/AuthContext";
 
+import DropdownMenu from "./../post/PostMenu";
+
 const Post = ({ post }) => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
 
@@ -58,7 +60,9 @@ const Post = ({ post }) => {
 							<span className="postDate">{format(post.createdAt)}</span>
 						</div>
 						<div className="postTopRight">
-							<MoreVertIcon />
+							<DropdownMenu post={post}>
+								<MoreVertIcon />
+							</DropdownMenu>
 						</div>
 					</div>
 					<div className="postCenter">
