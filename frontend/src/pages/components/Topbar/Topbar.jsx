@@ -3,9 +3,13 @@ import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import "./Topbar.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./../../../state/AuthContext";
 
 const Topbar = () => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
+
+	const { user } = useContext(AuthContext);
 	return (
 		<>
 			<div className="topbarContainer">
@@ -32,7 +36,13 @@ const Topbar = () => {
 							<NotificationsIcon />
 							<div className="topbarIconBadge">2</div>
 						</div>
-						<img src={PUBLIC_FOLDER + "/person/1.jpeg"} alt="" className="topbarImg" />
+						<Link to={`/profile/${user.username}`}>
+							<img
+								src={user.profilePicture ? user.profilePicture : PUBLIC_FOLDER + "/person/noAvatar.png"}
+								alt=""
+								className="topbarImg"
+							/>
+						</Link>
 					</div>
 				</div>
 			</div>

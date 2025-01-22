@@ -5,15 +5,18 @@ import { useEffect } from "react";
 import Post from "./../post/Post";
 import axios from "axios";
 
+import { useContext } from "react";
+import { AuthContext } from "./../../../state/AuthContext";
+
 const Timeline = ({ username }) => {
 	const [Posts, setPosts] = useState([]);
-
+	const { user } = useContext(AuthContext);
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
 				const response = username
-					? await axios.get(`/api/posts/profile/${username}`)
-					: await axios.get("/api/posts/timeline/678daa7b178a0daf01723059");
+					? await axios.get(`/api/posts/profile/${username}`) // profileの場合
+					: await axios.get(`/api/posts/timeline/${user._id}`); // ホームの場合
 				console.log(response.data);
 				setPosts(response.data);
 			} catch (error) {
@@ -21,7 +24,7 @@ const Timeline = ({ username }) => {
 			}
 		};
 		fetchPosts();
-	}, [username]);
+	}, [username, user._id]);
 
 	return (
 		<>

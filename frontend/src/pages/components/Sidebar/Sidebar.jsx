@@ -10,9 +10,12 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 
 import { Users } from "./../../../dummyData";
+import { useContext } from "react";
+import { AuthContext } from "./../../../state/AuthContext";
 
 const Sidebar = () => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
+	const { user } = useContext(AuthContext);
 	return (
 		<>
 			<div className="sidebar">
@@ -43,7 +46,7 @@ const Sidebar = () => {
 						</li>
 						<li className="sidebarListItem">
 							<ProfileIcon className="sidebarIcon" />
-							<Link to="/profile/anno" style={{ textDecoration: "none", color: "black" }}>
+							<Link to={"/profile/" + user.username} style={{ textDecoration: "none", color: "black" }}>
 								<span className="sidebarListItemText">プロフィール</span>
 							</Link>
 						</li>

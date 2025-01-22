@@ -2,12 +2,15 @@ import "./Register.css";
 
 import { useRef } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
 	const email = useRef();
 	const password = useRef();
 	const username = useRef();
 	const passwordConfirmation = useRef();
+
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -22,19 +25,12 @@ const Register = () => {
 				};
 				//regisetarApiを叩く
 				await axios.post("/api/auth/register", user);
+				navigate("/login");
 				console.log(user);
 			} catch (error) {
 				console.log(error);
 			}
 		}
-
-		// loginCall(
-		// 	{
-		// 		email: email.current.value,
-		// 		password: password.current.value,
-		// 	},
-		// 	dispatch
-		// );
 	};
 	return (
 		<>
