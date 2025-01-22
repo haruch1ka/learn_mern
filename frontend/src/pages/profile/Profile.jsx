@@ -8,8 +8,12 @@ import { useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
+import { useContext } from "react";
+import { AuthContext } from "./../../state/AuthContext";
+
 const Profile = () => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
+	const { user: currentuser } = useContext(AuthContext);
 
 	const [user, setUser] = useState({});
 	const username = useParams().username;
@@ -35,7 +39,15 @@ const Profile = () => {
 					<div className="profileRightTop">
 						<div className="profileCover">
 							<img src={user.coverPicture || PUBLIC_FOLDER + "/post/3.jpeg"} alt="" className="profileCoverImg" />
-							<img src={user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"} alt="" className="profileUserImg" />
+							<img
+								src={
+									currentuser.profilePicture != ""
+										? PUBLIC_FOLDER + currentuser.profilePicture
+										: PUBLIC_FOLDER + "/person/noAvatar.png"
+								}
+								alt=""
+								className="profileUserImg"
+							/>
 						</div>
 						<div className="profileInfo">
 							<h4 className="profileInfoName">{user.username}</h4>

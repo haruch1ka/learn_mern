@@ -4,13 +4,21 @@ import GifIcon from "@mui/icons-material/Gif";
 import FaceIcon from "@mui/icons-material/Face";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 
+import { useContext } from "react";
+import { AuthContext } from "./../../../state/AuthContext";
+
 const Share = () => {
 	const PUBLIC_FOLDER = import.meta.env.VITE_APP_PUBLIC_FOLDER;
+	const { user } = useContext(AuthContext);
 	return (
 		<div className="share">
 			<div className="shareWrapper">
 				<div className="shareTop">
-					<img src={PUBLIC_FOLDER + "/person/noAvatar.png"} alt="" className="shareProfileImg" />
+					<img
+						src={user.profilePicture != "" ? PUBLIC_FOLDER + user.profilePicture : PUBLIC_FOLDER + "/person/noAvatar.png"}
+						alt=""
+						className="shareProfileImg"
+					/>
 					<input type="text" className="shareInput" placeholder=" 今何してるの" />
 				</div>
 				<hr className="shareHr" />
