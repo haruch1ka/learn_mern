@@ -8,8 +8,7 @@ const Login = () => {
 	const email = useRef();
 	const password = useRef();
 	const { user, isFetching, error, dispatch } = useContext(AuthContext);
-	console.log(email);
-
+	console.log(user, isFetching, error);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		loginCall(
@@ -20,7 +19,6 @@ const Login = () => {
 			dispatch
 		);
 	};
-
 	return (
 		<>
 			<div className="login">
