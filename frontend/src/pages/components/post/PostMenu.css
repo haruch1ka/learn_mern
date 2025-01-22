@@ -1,0 +1,27 @@
+.modalOverlay {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	transform: translateY(10px);
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	z-index: 1000;
+}
+
+.modalContent {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+.dropdownButton {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
+.delButton {
+	white-space: nowrap;
+}

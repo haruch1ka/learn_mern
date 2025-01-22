@@ -7,7 +7,7 @@ export const initialState = {
 		username: "anno",
 		email: "anno@fakegmail.com",
 		password: "fakepass",
-		profilePicture: "",
+		profilePicture: "/person/1.jpeg",
 		followers: [],
 		followings: [],
 		isAdmin: false,

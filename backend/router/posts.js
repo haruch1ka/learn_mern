@@ -35,6 +35,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 	try {
 		const post = await Post.findById(req.params.id);
+		console.log(post.userId, req.body.userId);
 		if (post.userId === req.body.userId) {
 			await post.deleteOne();
 			return res.status(200).json("削除できた");
@@ -42,7 +43,6 @@ router.delete("/:id", async (req, res) => {
 			return res.status(403).json("自分の投稿だけ削除できる");
 		}
 	} catch (error) {
-		console.log(error);
 		return res.status(500).json(error);
 	}
 });
