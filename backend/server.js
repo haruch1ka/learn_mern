@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = 5000;
+const path = require("path");
 
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -18,6 +19,7 @@ const postsRoute = require("./router/posts");
 const uploadRoute = require("./router/upload");
 
 //middleware
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRoute);
