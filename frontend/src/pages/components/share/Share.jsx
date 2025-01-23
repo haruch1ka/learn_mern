@@ -4,7 +4,7 @@ import GifIcon from "@mui/icons-material/Gif";
 import FaceIcon from "@mui/icons-material/Face";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "./../../../state/AuthContext";
 
 import axios from "axios";
@@ -29,6 +29,8 @@ const Share = () => {
 			console.log("Error creating post:", error);
 		}
 	};
+	const [file, setFile] = useState(null);
+	console.log(file);
 
 	return (
 		<div className="share">
@@ -44,10 +46,19 @@ const Share = () => {
 				<hr className="shareHr" />
 				<form className="shareButtons" onSubmit={(e) => onSubmit(e)}>
 					<div className="shareOptions">
-						<div className="shareOption">
+						<label className="shareOption" htmlFor="file">
 							<ImageIcon className="shareIcon" htmlColor="blue" />
 							<span className="shareOptionText">写真</span>
-						</div>
+							<input
+								type="file"
+								id="file"
+								accept=".png, .jpeg, .jpg"
+								style={{ display: "none" }}
+								onChange={(e) => {
+									setFile(e.target.files[0]);
+								}}
+							/>
+						</label>
 						<div className="shareOption">
 							<GifIcon className="shareIcon" htmlColor="hotpink" />
 							<span className="shareOptionText">GIF</span>
