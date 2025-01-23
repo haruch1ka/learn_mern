@@ -33,8 +33,8 @@ const PostmMenu = ({ children, post }) => {
 			{isOpen && (
 				<div className="modalOverlay">
 					<div className="modalContent">
-						<button onClick={handleDelete}>
-							<span className="delButton">投稿を削除</span>
+						<button onClick={handleDelete} className="delButton">
+							<span>投稿を削除</span>
 						</button>
 					</div>
 				</div>

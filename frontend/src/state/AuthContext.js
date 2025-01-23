@@ -12,6 +12,16 @@ export const initialState = {
 		followings: [],
 		isAdmin: false,
 	},
+	// user: {
+	// 	_id: "6787b8baaa619391bbddb4f9",
+	// 	username: "田中更新",
+	// 	email: "hogehoge@fakegmail.com",
+	// 	password: "fakepass",
+	// 	profilePicture: "/person/1.jpeg",
+	// 	followers: [],
+	// 	followings: [],
+	// 	isAdmin: false,
+	// },
 	isFetching: false,
 	error: false,
 };
