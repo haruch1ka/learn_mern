@@ -15,6 +15,7 @@ mongoose
 const userRoute = require("./router/users");
 const authsRoute = require("./router/auth");
 const postsRoute = require("./router/posts");
+const uploadRoute = require("./router/upload");
 
 //middleware
 app.use(cors());
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use("/api/users", userRoute);
 app.use("/api/auth", authsRoute);
 app.use("/api/posts", postsRoute);
+app.use("/api/upload", uploadRoute);
 
 app.get("/", (req, res) => {
 	res.send("Hello World");
