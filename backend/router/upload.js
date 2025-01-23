@@ -2,13 +2,15 @@ const router = require("express").Router();
 const multer = require("multer");
 
 //multerの設定
-
+const decode = (filename) => {
+	return decodeURIComponent(filename);
+};
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, "public/images");
 	},
 	filename: (req, file, cb) => {
-		cb(null, file.originalname);
+		cb(null, req.body.imagename);
 	},
 });
 

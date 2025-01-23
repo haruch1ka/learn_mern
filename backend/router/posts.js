@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const Post = require("./../models/Post");
 const User = require("./../models/User");
+const fs = require("fs");
+const path = require("path");
 
 // CRUD
 //投稿の作成
@@ -38,6 +40,24 @@ router.delete("/:id", async (req, res) => {
 		console.log(post.userId, req.body.userId);
 		if (post.userId === req.body.userId) {
 			await post.deleteOne();
+			//画像がある場合
+			if (post.img) {
+				const currentPath = path.join(__dirname, "..", "public", "images", post.img);
+				//ファイルの存在を確認
+				if (fs.existsSync(currentPath)) {
+					//画像の削除
+					fs.unlink(currentPath, (err) => {
+						if (err) {
+							console.error("Error deleting image:", err);
+							return res.status(500).json("画像の削除に失敗しました");
+						}
+						console.log("Image deleted successfully");
+					});
+				} else {
+					console.error("Image not found:", currentPath);
+					return res.status(404).json("画像が見つかりません");
+				}
+			}
 			return res.status(200).json("削除できた");
 		} else {
 			return res.status(403).json("自分の投稿だけ削除できる");

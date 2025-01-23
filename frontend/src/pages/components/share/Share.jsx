@@ -14,6 +14,8 @@ const Share = () => {
 	const { user } = useContext(AuthContext);
 	const desc = useRef();
 
+	const [file, setFile] = useState(null);
+
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		const newPost = {
@@ -22,6 +24,21 @@ const Share = () => {
 			img: "",
 			likes: [],
 		};
+		if (file) {
+			const data = new FormData();
+			const fileName = file.name + Date.now();
+			data.append("imagename", fileName);
+			data.append("file", file);
+			newPost.img = fileName;
+			try {
+				await axios.post("/api/upload", data);
+			} catch (error) {
+				console.log("Error uploading image:", error);
+			}
+		} else {
+			console.log("No file selected");
+		}
+
 		try {
 			await axios.post("/api/posts", newPost);
 			window.location.reload();
@@ -29,8 +46,6 @@ const Share = () => {
 			console.log("Error creating post:", error);
 		}
 	};
-	const [file, setFile] = useState(null);
-	console.log(file);
 
 	return (
 		<div className="share">
